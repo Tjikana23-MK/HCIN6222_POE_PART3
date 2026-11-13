@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StudySprint helps students organise assignments, track progress and focus on the next task.">
+  <title>StudySprint | Plan. Progress. Finish.</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="StudySprint home"><span class="brand-mark" aria-hidden="true">✦</span><span>StudySprint</span></a>
+    <nav aria-label="Main navigation"><a href="#dashboard">Dashboard</a><a href="#assignments">Assignments</a><a href="#focus">Focus timer</a></nav>
+    <span class="profile-pill" aria-label="Demo profile">Student space</span>
+  </header>
+  <main id="main">
+    <section class="hero" id="home">
+      <div><p class="eyebrow">YOUR STUDY SPACE</p><h1>Small steps.<br><span>Big progress.</span></h1><p class="hero-copy">Turn deadlines into a plan you can actually follow. Choose one task, make a little progress, and keep moving.</p><a class="button button-primary" href="#assignments">Plan an assignment <span aria-hidden="true">→</span></a></div>
+      <div class="hero-card" aria-label="Daily encouragement"><div class="sun" aria-hidden="true">✦</div><p class="quote">“You don't have to finish everything today. Just start with the next step.”</p><p class="quote-caption">A reminder from StudySprint</p><div class="mini-progress"><div><span>Consistency</span><strong>one step at a time</strong></div><div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div></div>
+    </section>
+    <section id="dashboard" aria-labelledby="overview-heading">
+      <div class="section-heading"><div><p class="eyebrow">OVERVIEW</p><h2 id="overview-heading">Your progress at a glance</h2></div><p class="muted">Your assignments are saved in this browser.</p></div>
+      <div class="stats-grid"><article class="stat-card"><span class="stat-icon lavender" aria-hidden="true">▤</span><p>Assignments</p><strong id="stat-total">0</strong></article><article class="stat-card"><span class="stat-icon mint" aria-hidden="true">✓</span><p>Tasks completed</p><strong id="stat-done">0</strong></article><article class="stat-card"><span class="stat-icon gold" aria-hidden="true">◷</span><p>Upcoming deadlines</p><strong id="stat-upcoming">0</strong></article></div>
+    </section>
+    <section id="assignments" aria-labelledby="assignment-heading">
+      <div class="section-heading"><div><p class="eyebrow">MAKE A PLAN</p><h2 id="assignment-heading">My assignments</h2></div><button id="show-form" class="button button-secondary" type="button">＋ Add assignment</button></div>
+      <form id="assignment-form" class="form-card" hidden>
+        <div class="form-title"><div><h3 id="form-heading">Add an assignment</h3><p>Break the work into small, manageable steps.</p></div><button id="close-form" type="button" class="icon-button" aria-label="Close assignment form">×</button></div>
+        <input id="assignment-id" type="hidden">
+        <div class="form-grid"><div class="field"><label for="assignment-name">Assignment name <span aria-hidden="true">*</span></label><input id="assignment-name" name="assignment-name" maxlength="90" required placeholder="e.g. HCI research report"></div><div class="field"><label for="assignment-date">Due date <span aria-hidden="true">*</span></label><input id="assignment-date" name="assignment-date" type="date" required></div></div>
+        <div class="field"><label for="assignment-course">Module or subject (optional)</label><input id="assignment-course" maxlength="60" placeholder="e.g. HCIN6222"></div>
+        <div class="field"><label for="assignment-tasks">Task checklist (one task per line)</label><textarea id="assignment-tasks" rows="4" placeholder="Read the brief&#10;Do research&#10;Write the first draft&#10;Proofread and submit"></textarea><small>Leave blank to use a starter checklist. You can add or remove tasks later.</small></div>
+        <div class="form-actions"><button type="button" id="cancel-form" class="button button-quiet">Cancel</button><button class="button button-primary" type="submit">Save assignment</button></div>
+      </form>
+      <p id="form-status" class="status-message" role="status" aria-live="polite"></p>
+      <div id="assignment-list" class="assignment-grid" aria-live="polite"></div>
+      <div id="empty-state" class="empty-state"><div aria-hidden="true">✎</div><h3>Your plan starts here</h3><p>Add an assignment, then split it into tasks you can tick off one by one.</p><button class="button button-primary" id="empty-add" type="button">Create my first plan</button></div>
+    </section>
+    <section id="focus" class="focus-section" aria-labelledby="focus-heading">
+      <div class="focus-copy"><p class="eyebrow">FOCUS MODE</p><h2 id="focus-heading">Give one thing<br>your full attention.</h2><p>A short focus session can make a large task feel easier to begin. Take a break when you need one.</p><div class="focus-tip"><span aria-hidden="true">✦</span><span>Tip: choose one small task before you press start.</span></div></div>
+      <div class="timer-card"><p class="timer-label" id="timer-mode">FOCUS SESSION</p><div class="timer" id="timer" role="timer" aria-label="25 minutes remaining">25:00</div><div class="timer-controls"><button id="timer-start" class="button button-primary" type="button">Start focus</button><button id="timer-reset" class="button button-quiet" type="button">Reset</button></div><p id="timer-status" class="timer-status" role="status" aria-live="polite">Ready when you are.</p></div>
+    </section>
+    <section class="support-note" aria-label="Encouragement"><span aria-hidden="true">♡</span><div><h2>Progress, not perfection.</h2><p>StudySprint is a planning aid, not a measure of your worth. Adjust your plan when life gets busy.</p></div></section>
+  </main>
+  <footer><a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true">✦</span><span>StudySprint</span></a><p>Plan the work. Track the progress. Finish with confidence.</p><p class="footer-small">Student prototype · Data stays in this browser on this device.</p></footer>
+  <dialog id="confirm-dialog" aria-labelledby="confirm-heading"><form method="dialog" class="dialog-card"><h2 id="confirm-heading">Delete this assignment?</h2><p>The assignment and its checklist will be removed from this browser.</p><div class="form-actions"><button class="button button-quiet" value="cancel">Keep it</button><button class="button button-danger" id="confirm-delete" value="delete">Delete assignment</button></div></form></dialog>
+</body>
+</html>
